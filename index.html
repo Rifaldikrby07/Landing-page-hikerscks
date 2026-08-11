@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hikerscks</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #dcd9de;
+            color: #152220;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9000;
+            background: rgba(1, 29, 28, 0.92);
+            backdrop-filter: blur(0px);
+        }
+
+        .navbar {
+            width: 100%;
+            max-width: 900px;  
+            margin: auto;
+            height: 60px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: rgb(37, 180, 11);
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transform: translateX(-100px);
+        }
+
+        .logo span {
+            color: #cfc617;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-menu a {
+            color: rgb(17, 194, 23);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #84cc16;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+        .hero {
+            min-height: 100vh;
+
+
+            background:
+                         linear-gradient(
+                       rgba(3, 22, 22, 0.248),
+                       rgba(2, 24, 10, 0.274)
+            ),
+                         url("Assets/backgrouund.png");
+                         background-size: cover;
+                         background-position: center 26%;
+                         background-repeat: no-repeat;
+
+            display: flex;
+            align-items: left;
+            justify-content: center;
+
+            text-align: center;
+            color: rgba(114, 188, 23, 0.922);
+            padding: 100px 20px 50px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(42px, 7vw, 80px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-content h1 span {
+            color: #0ee215d6;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            max-width: 650px;
+            margin: 0 auto 30px;
+            color: #e8e1e1;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 28px;
+            background: #61ac06;
+            color: #22380d;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: rgb(78, 58, 228);
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           GENERAL SECTION
+        ========================= */
+        section {
+            padding: 90px 20px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            color: #ecf7ec;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #041818;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+        .about {
+            background: rgba(8, 235, 34, 0.636);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 20px;
+            display: block;
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #edefe7;
+        }
+
+        .about-text p {
+            color: #010005;
+            margin-bottom: 15px;
+        }
+
+        .info-list {
+            list-style: none;
+            margin-top: 25px;
+             color: #000000;
+        }
+
+        .info-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .info-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #f3f6ee;
+            font-weight: bold;
+        }
+
+        /* =========================
+           JOURNEY
+        ========================= */
+        .journey {
+            background: #5d7c49;
+        }
+
+        .journey-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .journey-card {
+            background: rgb(220, 222, 218);
+            padding: 30px;
+            border-radius: 18px;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 8px 25px rgba(227, 204, 204, 0.06);
+        }
+
+        .journey-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .journey-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #81b41d;
+            border-radius: 50%;
+            font-size: 30px;
+        }
+
+        .journey-icon img {
+             width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10%;
+        }
+
+        .journey-card h3 {
+            margin-bottom: 10px;
+            color: #170101;
+        }
+
+        .journey-card p {
+            color: #020109;
+            font-size: 14px;
+        }
+
+        /* =========================
+           GALLERY
+        ========================= */
+        .gallery {
+            background: rgba(113, 133, 5, 0.847);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+            display: block;
+            object-position: center 60%;
+            
+}
+        
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+
+            display: flex;
+            align-items: flex-end;
+
+            padding: 20px;
+
+            background: linear-gradient(
+                transparent,
+                rgba(214, 216, 206, 0.199)
+            );
+
+            color: rgb(0, 0, 0);
+            opacity: 0;
+            transition: 0.3s;
+             pointer-events: none;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h3 {
+            font-size: 18px;
+        }
+
+        /* Video */
+        .video-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 20px;
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+        .cta {
+            background:
+                linear-gradient(
+                    rgba(1, 30, 1, 0.108),
+                    rgba(1, 5, 20, 0.573)
+                ),
+                url(Assets/gunung\ prau.jpg );
+
+            background-size: 100% auto;
+            background-position: center 70%;
+             background-repeat: no-repeat;
+
+            text-align: center;
+            color: rgb(234, 247, 253);
+        }
+
+        .cta h2 {
+            font-size: clamp(32px, 5vw, 50px);
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            max-width: 650px;
+            margin: 0 auto 30px;
+            color: #000000;
+        }
+        /* =========================
+                     CONTACT
+        ========================= */
+
+        .contact {
+    background: #0b3028;
+    color: white;
+        }
+
+.contact .section-title h2 {
+    color: #ecf7ec;
+}
+
+.contact .section-title p {
+    color: #c8d8d2;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+.contact-item {
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    text-align: center;
+
+    transition: 0.3s;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.contact-item h3 {
+    margin-bottom: 10px;
+    color: #84cc16;
+}
+
+.contact-item p {
+    color: #e5eee9;
+}
+
+        /* =========================
+           FOOTER
+        ========================= */
+        footer {
+            background: #2d5ed0;
+            color: rgb(44, 20, 141);
+            padding: 40px 0px;
+            text-align: center;
+
+            width: 100%;
+        }
+
+        footer p {
+            color: #f0fdff;
+            font-size: 14px;
+        }
+
+        footer span {
+            color: #a3e635;
+        }
+
+        /* =========================
+           RESPONSIVE TABLET
+        ========================= */
+        @media (max-width: 900px) {
+
+            .nav-menu {
+                gap: 20px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image img {
+                height: 350px;
+            }
+
+            .journey-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* =========================
+           RESPONSIVE HP
+        ========================= */
+        @media (max-width: 600px) {
+
+            .navbar {
+                height: auto;
+                min-height: 70px;
+                flex-direction: column;
+                justify-content: center;
+                padding: 15px 0;
+                gap: 12px;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .nav-menu {
+                gap: 18px;
+            }
+
+            .nav-menu a {
+                font-size: 13px;
+            }
+
+            .hero {
+                min-height: 100vh;
+                padding-top: 150px;
+            }
+
+            .hero-content h1 {
+                font-size: 45px;
+            }
+
+            .hero-content p {
+                font-size: 15px;
+            }
+
+            section {
+                padding: 65px 15px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image img {
+                height: 280px;
+            }
+
+            .about-text h3 {
+                font-size: 26px;
+            }
+
+            .journey-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item {
+                height: 260px;
+            }
+
+            .cta {
+                padding: 80px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+    <header>
+        <nav class="navbar">
+
+            <a href="#home" class="logo">
+                HIKER<span>SCKS</span>
+            </a>
+
+            <ul class="nav-menu">
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#beranda">Beranda</a>
+                </li>
+
+                <li>
+                    <a href="#gallery">Gallery</a>
+                </li>
+
+                 <li>
+                    <a href="#contact">Kontak</a>
+                </li>
+            </ul>
+
+        </nav>
+        
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>
+                Jejak Langkah<br>
+                <span>Pendakian</span>
+            </h1>
+
+            <p>
+                Sebuah perjalanan untuk menikmati keindahan alam,
+                menambahkan pengalaman, dan menciptakan cerita
+                yang tak terlupakan.
+            </p>
+
+            <a href="#gallery" class="btn">
+                Jelajahi Perjalanan
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BERANDA / ABOUT
+    ========================== -->
+    <section class="about" id="beranda">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>TENTANG PERJALANAN</h2>
+                <p>
+                    Setiap langkah memiliki cerita hebat yang akan menjadi kenangan
+                </p>
+            </div>
+
+            <div class="about-content">
+
+                <div class="about-image">
+                    <img
+                        src="Assets/tanjataan.png"
+                        alt="Pendaki gunung"
+                    >
+                </div>
+
+                <div class="about-text">
+
+                    <h3>
+                        Mendaki Bukan Sekadar Mencapai Puncak
+                    </h3>
+
+                    <p>
+                        Perjalanan mendaki gunung mengajarkan kita
+                        tentang kesabaran, keberanian, persahabatan,
+                        dan bagaimana menikmati setiap proses perjalan yang panjang
+                    </p>
+
+                    <p>
+                        Karena dibalik setiap tanjakan terdapat pemandangan
+                        yang luar biasa dan cerita yang akan selalu
+                        dikenang, apalagi berangkat naik gunung nya dengan teman yang sefrekuensi seperti dengan alip, rifaldi dan apih
+                        yang membuat selama perjalan menjadi terasa happy.
+
+                    <p>
+                          Yang bisa didapatkan ketika mendaki bersama hikerscks, yaitu : 
+                    </p>
+
+                    </p>
+
+                    <ul class="info-list">
+                        <li>Menjelajahi keindahan alam Indonesia</li>
+                        <li>Mengabadikan setiap momen perjalanan</li>
+                        <li>Berbagi pengalaman bersama pendaki lainnya</li>
+                        <li>Menjaga kelestarian alam</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         JOURNEY
+    ========================== -->
+    <section class="journey">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>PERJALANAN PENDAKIAN</h2>
+                <p>
+                    Ada tiga hal yang membuat pendakian menjadi berkesan
+                    
+                </p>
+            </div>
+
+            <div class="journey-cards">
+
+                <div class="journey-card">
+
+                    <div class="journey-icon">
+                        <img src="Assets/Eksplorasi.jpeg" alt="Eksplorasi">
+                    </div>
+
+                    <h3>Eksplorasi</h3>
+
+                    <p>
+                        Menemukan jalur baru dan menikmati
+                        panorama alam dari ketinggian.
+                    </p>
+
+                </div>
+
+                <div class="journey-card">
+
+                    <div class="journey-icon">
+                         <img src="Assets/Petualangan.jpeg" alt="Petualangan">
+                    </div>
+
+                    <h3>Petualangan</h3>
+
+                    <p>
+                        Menghadapi setiap tantangan dengan
+                        semangat dan keberanian.
+                    </p>
+
+                </div>
+
+                <div class="journey-card">
+
+                    <div class="journey-icon">
+                        <img src="Assets/Kenangan.jpeg" alt="Kenangan">
+                    </div>
+
+                    <h3>Kenangan</h3>
+
+                    <p>
+                        Mengabadikan momen perjalanan melalui
+                        foto dan video.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GALLERY
+    ========================== -->
+    <section class="gallery" id="gallery">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>GALLERY PERJALANAN</h2>
+
+                <p>
+                    Beberapa momen yang berhasil kami abadikan.
+                </p>
+
+            </div>
+
+
+            <div class="gallery-grid">
+
+                <!-- FOTO 1 -->
+                <div class="gallery-item">
+
+                    <img
+                        src="Assets/Petualangan.jpeg"
+                        alt="Pegunungan"
+             
+                    >
+
+                    <div class="gallery-overlay">
+                        <h3>Menuju Puncak</h3>
+                    </div>
+
+                </div>
+
+
+                <!-- FOTO 2 -->
+                <div class="gallery-item">
+
+                    <img
+                        src="Assets/perjalanan pendaki.jpeg"
+                        alt="Pendaki"
+                    >
+
+                    <div class="gallery-overlay">
+                        <h3>Perjalanan Pendaki</h3>
+                    </div>
+
+                </div>
+
+
+                <!-- FOTO 3 -->
+                <div class="gallery-item">
+
+                    <img
+                        src="Assets/keindahanalam.jpeg"
+                        alt="Gunung"
+                    >
+
+                    <div class="gallery-overlay">
+                        <h3>Keindahan Alam</h3>
+                    </div>
+
+                </div>
+
+
+                <!-- FOTO 4 -->
+                <div class="gallery-item">
+
+                    <img
+                        src="Assets/diatasawan.jpeg"
+                        alt="Puncak gunung"
+                    >
+
+                    <div class="gallery-overlay">
+                        <h3>Di Atas Awan</h3>
+                    </div>
+
+                </div>
+
+
+                <!-- FOTO 5 -->
+                <div class="gallery-item">
+
+                    <img
+                        src="Assets/jalurpendakian.jpeg"
+                        alt="Jalur pendakian"
+                    >
+
+                    <div class="gallery-overlay">
+                        <h3>Jalur Pendakian</h3>
+                    </div>
+
+                </div>
+
+
+                <!-- VIDEO -->
+           <div class="gallery-item video-card">
+
+            <video
+                controls
+                playsinline
+                preload="metadata"
+                width="100%"
+            >
+                <source src="Assets/videoperjalananpendaki.mp4" type="video/mp4">
+                Browser kamu tidak mendukung video.
+            </video>
+
+            <div class="gallery-overlay">
+                <h3>Video Perjalanan</h3>
+            </div>
+
+        </div>
+
+        </div>
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================== -->
+    <section class="cta">
+
+        <div class="container">
+
+            <h2>
+                Siap Memulai Petualangan?
+            </h2>
+
+            <p>
+                Setiap gunung memiliki cerita,
+                dan setiap perjalanan memiliki kenangan yang akan selalu dikenang sampai kapanpun,
+                mari melangkah dan temukan ceritamu sendiri.
+            </p>
+
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+                 KONTAK
+    ========================= -->
+<section class="contact" id="contact">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>SOSIAL MEDIA</h2>
+
+            <p>
+                ingin join untuk mengikuti perjalan pendakian kami?
+                <br>
+                bisa langsung menghubungi sosial media yang ada dibawah ini
+                </br>
+            </p>
+        </div>
+
+        <div class="contact-content">
+
+            <div class="contact-item">
+                <h3>
+                     <i class="fa-brands fa-instagram"></i>
+                     Instagram </h3>
+                <p>@hikerscks</p>
+            </div>
+
+            <div class="contact-item">
+                <h3>
+                     <i class="fa-brands fa-instagram"></i>
+                    Instagram</h3>
+                <p>@ptrutama</p>
+            </div>
+
+            <div class="contact-item">
+                <h3>
+                     <i class="fa-brands fa-instagram"></i>
+                    Instagram</h3>
+                <p>@kkoeskum</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer>
+
+        <p>
+           <span>© 2026 HIKERSCKS</span>
+          
+        </p>
+
+    </footer>
+
+</body>
+</html>
